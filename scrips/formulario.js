@@ -12,6 +12,12 @@ var nombre = ''
 var velocidad = ''
 var estado = ''
 var tipo = '' 
+//objeto que nos ayudaran a realizar la confirmacion de campos
+const validador = {
+    nombre:false,
+    velocidad: false,
+    tipo: false
+};
 //usaremos la clase participante para facilitar la creacion de objetos 
 class participante{
     constructor(nombre,velocidad,estado,tipo){
@@ -30,7 +36,14 @@ let turnos = []
 //funcion para validar campos y asegurar que los campos inportantes no esten vacios
 const validar= (input,campo)=>{
     if(input === ''){
-        
+        document.getElementById(`formulario__alerta_${campo}`).classList.remove('inactiva')
+        document.getElementById(`formulario__alerta_${campo}`).classList.add('activa')
+        validador[campo] = false
+    }
+    else{
+        document.getElementById(`formulario__alerta_${campo}`).classList.remove('activa')
+        document.getElementById(`formulario__alerta_${campo}`).classList.add('inactiva')
+        validador[campo] = true
     }
 }
 
@@ -46,16 +59,13 @@ agregar.addEventListener('click',(e)=>{
         //con la data identificada se armara un objeto para el posterior uso en el programa de turnos 
         switch(dato.name){
             case "nombre":
-                if (dato.value === ''){                
-                    
-                }
-                else{
-                    nombre = dato.value
-                    dato.value = ''
-                }
+                nombre = dato.value
+                validar(nombre,'nombre')                
+                dato.value = ''                
             break
             case "velocidad":
                 velocidad = dato.value
+                validar(velocidad,'velocidad')
                 dato.value = ''
             break
             case "estado":
@@ -64,11 +74,13 @@ agregar.addEventListener('click',(e)=>{
             break
             case "tipo":
                 tipo = dato.value
-                dato.value = ''
+                validar(tipo,'tipo')
             break
         }
     });
-    turnos.push(new participante(nombre,velocidad,estado,tipo))
+    if(validador.nombre && validador.velocidad && validador.tipo){
+        turnos.push(new participante(nombre,velocidad,estado,tipo))
+    }
+    console.log(turnos)
+    console.log(validador)
 });
-
-export default turnos

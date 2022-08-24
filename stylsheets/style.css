@@ -1,3 +1,6 @@
 .inactiva {
     display: none;
 }
+.activa{
+    display: block;
+}
