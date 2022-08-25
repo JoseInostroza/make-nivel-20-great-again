@@ -80,7 +80,16 @@ agregar.addEventListener('click',(e)=>{
     });
     if(validador.nombre && validador.velocidad && validador.tipo){
         turnos.push(new participante(nombre,velocidad,estado,tipo))
+        let confirmacion = document.getElementById('confirmacion')
+        confirmacion.innerHTML= `Se agrego correctamente a ${nombre}`
+        confirmacion.classList.remove('inactiva')
+        confirmacion.classList.add('activa')
+        setTimeout(()=>{
+            confirmacion.classList.remove('activa')
+            confirmacion.classList.add('inactiva')
+        },2000)
     }
+
     console.log(turnos)
     console.log(validador)
 });
