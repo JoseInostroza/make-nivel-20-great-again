@@ -7,6 +7,8 @@ let formulario = document.getElementById('formulario');
 let inputs = document.querySelectorAll('#formulario input');
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
 let agregar = document.getElementById('agregar');
+//tomamos la notificacion de ingreso correcto o incorrecto para trabajarla mas adelante
+let confirmacion = document.getElementById('confirmacion')
 //variable ausiliares que nos ayudara a guardar los nombres de cada objeto 
 var nombre = ''
 var velocidad = ''
@@ -80,14 +82,18 @@ agregar.addEventListener('click',(e)=>{
     });
     if(validador.nombre && validador.velocidad && validador.tipo){
         turnos.push(new participante(nombre,velocidad,estado,tipo))
-        let confirmacion = document.getElementById('confirmacion')
-        confirmacion.innerHTML= `Se agrego correctamente a ${nombre}`
-        confirmacion.classList.remove('inactiva')
-        confirmacion.classList.add('activa')
+        confirmacion.innerHTML= `Se agrego correctamente a ${nombre}`;
+        confirmacion.classList.remove('inactiva');
+        confirmacion.classList.add('activa', 'correcto');
         setTimeout(()=>{
-            confirmacion.classList.remove('activa')
-            confirmacion.classList.add('inactiva')
-        },2000)
+            confirmacion.classList.remove('activa', 'correcto');
+            confirmacion.classList.add('inactiva');
+        },4000)
+    }
+    else{
+        confirmacion.innerHTML='faltan campos mi rey';
+        confirmacion.classList.remove('inactiva');
+        confirmacion.classList.add('activa', 'incorrecto');
     }
 
     console.log(turnos)
