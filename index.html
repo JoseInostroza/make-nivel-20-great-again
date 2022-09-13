@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayuda Masters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylsheets/style.css">
+    <!--boxicon-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <header>
     
     </header>
     <main>
+        <aside>
+
+        </aside>
         <form id="formulario" name="formulario" class="formulario__personaje">
             <label for="nombre">Introduce el nombre del participante:
                 <input type="text" id="nombre" name="nombre" class="formulario__personaje-nombre">                
@@ -25,15 +33,16 @@
                 <input type="text"id="estado" name="estado" class="formulario__personaje-estado" placeholder="esta opcion esta en beta">
             </label>
             <label for="tipo">tipo de participante:
-                <input type="radio" name="tipo" id="tipo" class="formulario__personaje-tipo" value="npc"> npc
-                <input type="radio" name="tipo" id="tipo" class="formulario__personaje-tipo" value="jugador"> jugador
+                <input type="text" name="tipo" id="tipo" class="formulario__personaje-tipo" placeholder="npc o jugador"> 
             </label>
             <span class="formulario__alerta_tipo inactiva" id="formulario__alerta_tipo">Campo obligatorio</span>
             <!--otras estadisticas importantes a futuro vida, clase, alineamiento, rol (npc/jugador)-->
             <button id="agregar" class="button">agregar</button>
+            <span class="confirmacion inactiva" id="confirmacion"></span>
             <a href="/turnos.html" class="arranque">Comenzar</a>
         </form>
-        <span class="confirmacion inactiva" id="confirmacion"></span>
+        <!--agregar interfas visual de participantes (span .participante__npc, .participante__jugador)+js--->
+        <span id="alineacion" class="participantes__lista"></span>
     </main>
     <footer>
 
