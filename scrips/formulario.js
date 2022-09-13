@@ -33,6 +33,11 @@ class participante{
         this.estado='muerto'
     }
 };
+//constantes que nos ayudaran a integrar una inferfaz visual de los participantes actuales
+const alineacion = document.getElementById('alineacion')
+const player = "<i class='bx bx-user'></i>"
+const nonplayer ="<i class='bx bxs-user' ></i>"
+
 //array para guardar a los partisipantes y luego ordenarlos 
 let turnos = []
 //funcion para validar campos y asegurar que los campos inportantes no esten vacios
@@ -77,12 +82,18 @@ agregar.addEventListener('click',(e)=>{
             case "tipo":
                 tipo = dato.value
                 validar(tipo,'tipo')
+                dato.value = ''
             break
         }
     });
     if(validador.nombre && validador.velocidad && validador.tipo){
         turnos.push(new participante(nombre,velocidad,estado,tipo))
         confirmacion.innerHTML= `Se agrego correctamente a ${nombre}`;
+        if(tipo === 'npc'){
+            alineacion.innerHTML += nonplayer
+        }else{
+            alineacion.innerHTML += player
+        }
         confirmacion.classList.remove('inactiva');
         confirmacion.classList.add('activa', 'correcto');
         setTimeout(()=>{
@@ -99,3 +110,5 @@ agregar.addEventListener('click',(e)=>{
     console.log(turnos)
     console.log(validador)
 });
+
+export default (turnos)
