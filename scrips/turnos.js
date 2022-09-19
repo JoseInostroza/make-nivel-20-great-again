@@ -1,7 +1,8 @@
-import turnos from formulario
+function ordenar(Aray){
+    Aray.sort((a,b)=>{
+        b.velocidad - a.velocidad
+    })
+    return Aray
+}
 
-let oredenar = turnos.sort((a,b)=>{
-    return b.velocidad - a.velocidad
-})
-
-alert(oredenar)
+export {ordenar}
