@@ -1,8 +1,10 @@
+import { ordenar } from "./turnos";
+
 //esqueleto de ayudanete de turnos para masters
 //ingreso de datos por formulario
 //guardado de info boton agregar
 //por comodidad tomamos el formulario
-let formulario = document.getElementById('formulario');
+let comenzar = document.getElementById('comenzar');
 //por comodidad tomamos todos los inputs
 let inputs = document.querySelectorAll('#formulario input');
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
@@ -110,5 +112,3 @@ agregar.addEventListener('click',(e)=>{
     console.log(turnos)
     console.log(validador)
 });
-
-export default (turnos)
