@@ -27,3 +27,7 @@ main{
 .activa{
     display: block;
 }
+
+.inactiva{
+    display: none;
+}

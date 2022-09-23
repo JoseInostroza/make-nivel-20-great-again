@@ -20,9 +20,9 @@
     <main>
         <h1>Ayuda Masters</h1>
         <h2>Apoyo en batallas</h2>
-        <h3>Registra a los participantes</h3>
-
-        <div>
+        
+        <div class="primera__parte-ingreso activa" id="primeraparte">
+            <h3>Registra a los participantes</h3>
             <section id="formulario" class="registro__personajes">
                 <label for="nombre">Registra a tu participante:
                     <input type="text" id="nombre" name="nombre" class="registro__personaje-nombre" />
@@ -55,7 +55,7 @@
 
             <section class="botones" id="botones">
                 <button id="agregar" class="boton" type="submit">Agregar</button>
-                <button id="cierre" class="boton">Guardar y Continuar</button>
+                <button id="cierre" class="boton">Comenzar</button>
             </section>
         </div>
         <!--agregar interfas visual de participantes (span .participante__npc, .participante__jugador)+js--->
@@ -63,6 +63,11 @@
             <span class="npc" id="npc"></span>
             <span class="player" id="player"></span>
         </section>
+
+        <div class="segunda__parte-juego inactiva" id="segundaparte">
+            <h3>Comienza la batalla</h3>
+            
+        </div>
     </main>
     <footer></footer>
     <script src="/scrips/formulario.js"></script>
