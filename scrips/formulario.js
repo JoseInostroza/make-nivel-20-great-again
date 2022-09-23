@@ -2,6 +2,9 @@
 //ingreso de datos por formulario
 //guardado de info boton agregar
 //por comodidad tomamos el formulario
+const primeraParte = document.getElementById('primeraparte')
+//por comodidad tomamos el formulario
+const segundaParte = document.getElementById('segundaparte')
 //por comodidad tomamos todos los inputs
 let inputs = document.querySelectorAll('#formulario input');
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
@@ -104,5 +107,20 @@ agregar.addEventListener('click',()=>{
 });
 
 cierre.addEventListener('click', ()=>{
-    
+    turnos.sort((a, b)=>{
+        if(a.velocidad > b.velocidad){
+            return -1
+        }
+        else if(a.velocidad < b.velocidad){
+            return 1
+        }
+        else{
+            return 0
+        }
+    })
+    primeraParte.classList.remove('activa')
+    primeraParte.classList.add('inactiva')
+    segundaParte.classList.remove('inactiva')
+    segundaParte.classList.add('activa')
+    console.log(turnos)
 })
