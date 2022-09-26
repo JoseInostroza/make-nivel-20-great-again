@@ -39,7 +39,7 @@
                 <label for="estado">Cual es el estado incial del participante:
                     <!--estados basicos (vivo->muerto) a futura se agregarian invisible amistoso agrecivo-->
                     <input type="text" id="estado" name="estado" class="formulario__personaje-estado"
-                        placeholder="esta opcion esta en beta" />
+                        placeholder="vivo " />
                 </label>
 
                 <label for="tipo">tipo de participante:
@@ -66,7 +66,14 @@
 
         <div class="segunda__parte-juego inactiva" id="segundaparte">
             <h3>Comienza la batalla</h3>
-            
+            <p>Es el turno de <span id="turno_activo"></span></p>
+            <label for="actualizacion_de_estado"> Actualiza el estado del personaje o partida:
+                <input type="text" id="chat" class="Ingreso_estado" placeholder="Estados posibles vivo, muerto, terminado">
+            </label>
+            <button class="boton" id="interaccion">Actualizar</button>
+            <p class="chat__batalla">
+                <span id="registro_batalla"></span>
+            </p>
         </div>
     </main>
     <footer></footer>
