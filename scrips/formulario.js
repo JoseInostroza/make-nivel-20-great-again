@@ -2,9 +2,9 @@
 //ingreso de datos por formulario
 //guardado de info boton agregar
 //por comodidad tomamos el formulario
-const primeraParte = document.getElementById('primeraparte')
+const primeraParte = document.getElementById('primeraparte');
 //por comodidad tomamos el formulario
-const segundaParte = document.getElementById('segundaparte')
+const segundaParte = document.getElementById('segundaparte');
 //por comodidad tomamos todos los inputs
 let inputs = document.querySelectorAll('#formulario input');
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
@@ -12,10 +12,10 @@ const agregar = document.getElementById('agregar');
 //tomamos la notificacion de ingreso correcto o incorrecto para trabajarla mas adelante
 const cierre = document.getElementById('cierre');
 //variable ausiliares que nos ayudara a guardar los nombres de cada objeto 
-var nombre = ''
-var velocidad = ''
-var estado = ''
-var tipo = '' 
+var nombre = '';
+var velocidad = '';
+var estado = '';
+var tipo = '' ;
 //objeto que nos ayudaran a realizar la confirmacion de campos
 const validador = {
     nombre:false,
@@ -31,18 +31,21 @@ class participante{
         this.tipo=tipo
     }
     //una mousquerramienta que nos servira mas tarde, para generar la actualizacion de estados mas agil
-    cambio_stado(){
+    cambio_stado(nuevoEstado){
+        this.estado=nuevoEstado
+    }
+    muerto(){
         this.estado='muerto'
     }
 };
 //constantes que nos ayudaran a integrar una inferfaz visual de los participantes actuales
-const listaNpc = document.getElementById('npc')
-const listaPlayers = document.getElementById('player')
-const player = "<i class='bx bxs-face'></i>"
-const nonplayer="<i class='bx bx-bot'></i>"
+const listaNpc = document.getElementById('npc');
+const listaPlayers = document.getElementById('player');
+const player = "<i class='bx bxs-face'></i>";
+const nonplayer="<i class='bx bx-bot'></i>";
 
 //array para guardar a los partisipantes y luego ordenarlos 
-let turnos = []
+let turnos = [];
 //funcion para validar campos y asegurar que los campos inportantes no esten vacios
 const validar= (input,campo)=>{
     if(input === ''){
@@ -53,7 +56,20 @@ const validar= (input,campo)=>{
         document.getElementById(`formulario-${campo}`).classList.remove('activa')        
         validador[campo] = true
     }
-}
+};
+//constantes para la segunda parte
+//variable ausiliar que nos ayuda a determinar el estado de la partida
+var estadoPartida = "Registro"
+
+const interaccion = document.getElementById("interaccion")
+const chat = document.getElementById('chat')
+const estadoParticipante = document.getElementById('chat')
+let activo = document.getElementById('turno_activo')
+var contador = 0
+
+
+//comuenzo de la ejecucion de programas
+//parte uno Registro
 agregar.addEventListener('click',()=>{
     //tengo que probar si funciona sin prevent default si funciona se saca, si no tengo que programar el borrado
     //de las opciones 
@@ -103,15 +119,14 @@ agregar.addEventListener('click',()=>{
         confirmacion.innerHTML='faltan campos mi rey';
         confirmacion.classList.add('activa');
     }
-    console.log(turnos)
 });
 
 cierre.addEventListener('click', ()=>{
     turnos.sort((a, b)=>{
-        if(a.velocidad > b.velocidad){
+        if( parseInt(a.velocidad) > parseInt(b.velocidad)){
             return -1
         }
-        else if(a.velocidad < b.velocidad){
+        else if(parseInt(a.velocidad) < parseInt(b.velocidad)){
             return 1
         }
         else{
@@ -122,5 +137,20 @@ cierre.addEventListener('click', ()=>{
     primeraParte.classList.add('inactiva')
     segundaParte.classList.remove('inactiva')
     segundaParte.classList.add('activa')
-    console.log(turnos)
+//comienzo de la segunda parte
+    estadoPartida = 'ejecutando'
+    activo.innerHTML = turnos[0].nombre
+    contador+=1
+})
+
+interaccion.addEventListener('click',()=>{
+    if(contador === (turnos.length - 1)){
+        activo.innerHTML = turnos[contador].nombre
+        
+        contador=0
+    }
+    else{
+        activo.innerHTML = turnos[contador].nombre
+        contador+=1
+    }
 })
