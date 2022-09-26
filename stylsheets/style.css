@@ -31,3 +31,9 @@ main{
 .inactiva{
     display: none;
 }
+
+#turno_activo{
+    color: firebrick;
+    font-size: 2rem;
+    font-weight: 800;
+}

@@ -13,6 +13,7 @@ const agregar = document.getElementById('agregar');
 const cierre = document.getElementById('cierre');
 //variable ausiliares que nos ayudara a guardar los nombres de cada objeto 
 var nombre = '';
+var vida = '' ;
 var velocidad = '';
 var estado = '';
 var tipo = '' ;
@@ -24,8 +25,9 @@ const validador = {
 };
 //usaremos la clase participante para facilitar la creacion de objetos 
 class participante{
-    constructor(nombre,velocidad,estado,tipo){
+    constructor(nombre,vida,velocidad,estado,tipo){
         this.nombre=nombre
+        this.vida=vida
         this.velocidad=velocidad
         this.estado=estado
         this.tipo=tipo
@@ -53,7 +55,7 @@ const validar= (input,campo)=>{
         validador[campo] = false
     }
     else{
-        document.getElementById(`formulario-${campo}`).classList.remove('activa')        
+        document.getElementById(`formulario-${campo}`).classList.remove('activa')     
         validador[campo] = true
     }
 };
@@ -81,29 +83,35 @@ agregar.addEventListener('click',()=>{
         switch(dato.name){
             case "nombre":
                 nombre = dato.value
-                validar(nombre,'nombre')                
-                dato.value = ''                
+                validar(nombre,'nombre') 
+                dato.value = ''                 
+            break
+            case "vida":
+                vida = dato.value
+                validar(vida,'vida') 
+                dato.value = ''                 
             break
             case "velocidad":
                 velocidad = dato.value
                 validar(velocidad,'velocidad')
-                dato.value = ''
+                dato.value = ''  
             break
             case "estado":
                 estado = dato.value
-                dato.value = ''
+                dato.value = ''  
             break
             case "tipo":
                 tipo = dato.value
                 validar(tipo,'tipo')
-                dato.value = ''
+                dato.value = ''  
             break
         }
+        console.log(turnos)
     });
 
     //validador de opciones de ingreso 
     if(validador.nombre && validador.velocidad && validador.tipo){
-        turnos.push(new participante(nombre,velocidad,estado,tipo))
+        turnos.push(new participante(nombre,vida,velocidad,estado,tipo))
         confirmacion.innerHTML= `Se agrego correctamente a ${nombre}`;
         if(tipo === 'npc'){
             listaNpc.innerHTML += nonplayer
@@ -140,17 +148,15 @@ cierre.addEventListener('click', ()=>{
 //comienzo de la segunda parte
     estadoPartida = 'ejecutando'
     activo.innerHTML = turnos[0].nombre
-    contador+=1
 })
 
 interaccion.addEventListener('click',()=>{
-    if(contador === (turnos.length - 1)){
-        activo.innerHTML = turnos[contador].nombre
-        
-        contador=0
+    if(contador === (turnos.length-1))
+        {contador=0
+        activo.innerHTML = turnos[contador].nombre       
     }
     else{
-        activo.innerHTML = turnos[contador].nombre
         contador+=1
+        activo.innerHTML = turnos[contador].nombre        
     }
 })
