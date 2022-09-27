@@ -69,13 +69,33 @@
             <span class="player" id="player"></span>
         </section>
 
-        <div class="segunda__parte-juego inactiva" id="segundaparte">
+        <div class="segunda__parte-juego activa" id="segundaparte">
             <h3>Comienza la batalla</h3>
             <p>Es el turno de <span id="turno_activo"></span></p>
-            <label for="actualizacion_de_estado"> Actualiza el estado del personaje o partida:
-                <input type="text" id="chat" class="Ingreso_estado" placeholder="Estados posibles vivo, muerto, terminado">
-            </label>
-            <button class="boton" id="interaccion">Actualizar</button>
+            <div id="acciones">
+                <h3 class="acciones">¿Que hace el personaje?</h3>
+                <div class="acciones__curacion">
+                    <label for="cantidad-curacion"> Curacion realizada:
+                        <input type="number" name="cantidad-curacion" id="cantidad-curacion" class="accion__cuarcion-cantidad">
+                    </label>
+                    <label for="target-curacion">
+                        <input type="text" name="target-curacion" id="target-curacion" class="accion__curacion-target">
+                    </label>
+                    <button class="accion__curacion-realizar">Curar</button>
+                </div>
+                <div class="acciones__daño">
+                    <label for="cantidad-daño"> Daño realizado:
+                        <input type="number" name="cantidad-daño" id="cantidad-daño" class="accion__daño-cantidad">
+                    </label>
+                    <label for="target-daño">
+                        <input type="text" name="target-daño" id="target-daño" class="accion__daño-target">
+                    </label>
+                    <button class="accion__daño-realizar">Emotional damage</button>
+                </div>
+            </div>
+
+            <button class="boton" id="interaccion">siguente turno</button>
+
             <p class="chat__batalla">
                 <span id="registro_batalla"></span>
             </p>
