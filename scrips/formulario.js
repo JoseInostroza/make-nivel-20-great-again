@@ -1,11 +1,11 @@
 //esqueleto de ayudanete de turnos para masters
 //ingreso de datos por formulario
 //guardado de info boton agregar
-//por comodidad tomamos el formulario
+//por comodidad tomamos la parte de registro
 const primeraParte = document.getElementById('primeraparte');
-//por comodidad tomamos el formulario
+//por comodidad tomamos la aprte de batalla
 const segundaParte = document.getElementById('segundaparte');
-//por comodidad tomamos todos los inputs
+//por comodidad tomamos todos los inputs de registro
 let inputs = document.querySelectorAll('#formulario input');
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
 const agregar = document.getElementById('agregar');
@@ -32,7 +32,7 @@ class participante{
         this.estado=estado
         this.tipo=tipo
     }
-    //una mousquerramienta que nos servira mas tarde, para generar la actualizacion de estados mas agil
+    //unas mousquerramientas que nos serviran mas tarde, para generar la actualizacion de estados mas agil
     cambio_stado(nuevoEstado){
         this.estado=nuevoEstado
     }
@@ -63,7 +63,7 @@ const validar= (input,campo)=>{
 //variable ausiliar que nos ayuda a determinar el estado de la partida
 var estadoPartida = "Registro"
 
-const interaccion = document.getElementById("interaccion")
+const pasar = document.getElementById("pasar")
 const chat = document.getElementById('chat')
 const estadoParticipante = document.getElementById('chat')
 let activo = document.getElementById('turno_activo')
@@ -150,7 +150,7 @@ cierre.addEventListener('click', ()=>{
     activo.innerHTML = turnos[0].nombre
 })
 
-interaccion.addEventListener('click',()=>{
+pasar.addEventListener('click',()=>{
     if(contador === (turnos.length-1))
         {contador=0
         activo.innerHTML = turnos[contador].nombre       

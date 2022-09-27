@@ -74,7 +74,7 @@
             <p>Es el turno de <span id="turno_activo"></span></p>
             <div id="acciones">
                 <h3 class="acciones">¿Que hace el personaje?</h3>
-                <div class="acciones__curacion">
+                <div class="acciones__curacion" id="acciones__curacion">
                     <label for="cantidad-curacion"> Curacion realizada:
                         <input type="number" name="cantidad-curacion" id="cantidad-curacion" class="accion__cuarcion-cantidad">
                     </label>
@@ -83,7 +83,7 @@
                     </label>
                     <button class="accion__curacion-realizar">Curar</button>
                 </div>
-                <div class="acciones__daño">
+                <div class="acciones__daño" id="acciones__daño">
                     <label for="cantidad-daño"> Daño realizado:
                         <input type="number" name="cantidad-daño" id="cantidad-daño" class="accion__daño-cantidad">
                     </label>
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <button class="boton" id="interaccion">siguente turno</button>
+            <button class="boton" id="pasar">siguente turno</button>
 
             <p class="chat__batalla">
                 <span id="registro_batalla"></span>
