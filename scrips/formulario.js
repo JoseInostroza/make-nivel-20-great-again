@@ -104,7 +104,6 @@ agregar.addEventListener("click", () => {
                 dato.value = "";
                 break;
         }
-        console.log(turnos);
     });
 
     //validador de opciones de ingreso
@@ -126,6 +125,7 @@ agregar.addEventListener("click", () => {
     }
 });
 
+
 cierre.addEventListener("click", () => {
     turnos.sort((a, b) => {
         if (parseInt(a.velocidad) > parseInt(b.velocidad)) {
@@ -145,10 +145,17 @@ cierre.addEventListener("click", () => {
     activo.innerHTML = turnos[0].nombre;
 });
 
+let dataCuracion =document.querySelectorAll('#acciones__curacion input');
+let dataDaño =document.querySelectorAll('#acciones__daño input');
+const botonCuracion =document.getElementById('boton_curacion')
+const botonDaño=document.getElementById('boton_daño')
+
+
 pasar.addEventListener("click", () => {
     if (contador === turnos.length - 1) {
         contador = 0;
         activo.innerHTML = turnos[contador].nombre;
+        console.log(turnos)
     } else {
         contador += 1;
         activo.innerHTML = turnos[contador].nombre;
