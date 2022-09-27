@@ -1,108 +1,163 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ayuda Masters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/stylsheets/style.css" />
     <!--boxicon-->
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-</head>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <header></header>
     <main>
-        <h1>Ayuda Masters</h1>
-        <h2>Apoyo en batallas</h2>
-        
-        <div class="primera__parte-ingreso activa" id="primeraparte">
-            <h3>Registra a los participantes</h3>
-            <section id="formulario" class="registro__personajes">
-                <label for="nombre">Registra a tu participante:
-                    <input type="text" id="nombre" name="nombre" class="registro__personaje-nombre" />
-                </label>
-                <span class="formulario-nombre alerta" id="formulario-nombre">Campo obligatorio</span>
+      <h1>Ayuda Masters</h1>
+      <h2>Apoyo en batallas</h2>
 
-                <label for="nombre">¿Cuanta vida tiene?:
-                    <input type="number" id="vida" name="vida" class="registro__personaje-vida" />
-                </label>
-                <span class="formulario-vida alerta" id="formulario-vida">Campo obligatorio</span>
+      <div class="primera__parte-ingreso activa" id="primeraparte">
+        <h3>Registra a los participantes</h3>
+        <section id="formulario" class="registro__personajes">
+          <label for="nombre"
+            >Registra a tu participante:
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              class="registro__personaje-nombre"
+            />
+          </label>
+          <span class="formulario-nombre alerta" id="formulario-nombre"
+            >Campo obligatorio</span
+          >
 
+          <label for="nombre"
+            >¿Cuanta vida tiene?:
+            <input
+              type="number"
+              id="vida"
+              name="vida"
+              class="registro__personaje-vida"
+            />
+          </label>
+          <span class="formulario-vida alerta" id="formulario-vida"
+            >Campo obligatorio</span
+          >
 
-                <label for="velocidad">¿Cual es su iniciativa?:
-                    <input type="number" id="velocidad" name="velocidad" class="formulario__personaje-vel" />
-                </label>
+          <label for="velocidad"
+            >¿Cual es su iniciativa?:
+            <input
+              type="number"
+              id="velocidad"
+              name="velocidad"
+              class="formulario__personaje-vel"
+            />
+          </label>
 
-                <span class="formulario-velocidad alerta" id="formulario-velocidad">Campo obligatorio, solo puede tener
-                    valores numericos</span>
+          <span class="formulario-velocidad alerta" id="formulario-velocidad"
+            >Campo obligatorio, solo puede tener valores numericos</span
+          >
 
-                <label for="estado">¿Cual es el estado incial del participante?:
-                    <!--estados basicos (vivo->muerto) a futura se agregarian invisible amistoso agresivo-->
+          <!-- <label for="estado">¿Cual es el estado incial del participante?:
+                    estados basicos (vivo->muerto) a futura se agregarian invisible amistoso agresivo
                     <input type="text" id="estado" name="estado" class="formulario__personaje-estado"
                         placeholder="" />
-                </label>
+                </label>-->
 
-                <label for="tipo">¿tipo de participante?:
-                    <input type="text" name="tipo" id="tipo" class="formulario__personaje-tipo"
-                        placeholder="npc o jugador" />
-                </label>
-                <span class="formulario-tipo alerta" id="formulario-tipo">Campo obligatorio</span>
+          <label for="tipo"
+            >¿tipo de participante?:
+            <input
+              type="text"
+              name="tipo"
+              id="tipo"
+              class="formulario__personaje-tipo"
+              placeholder="npc o jugador"
+            />
+          </label>
+          <span class="formulario-tipo alerta" id="formulario-tipo"
+            >Campo obligatorio</span
+          >
 
-                <!--otras estadisticas importantes a futuro vida, clase, alineamiento, rol (npc/jugador)-->
-                <span class="confirmacion alerta" id="confirmacion"></span>
-            </section>
-
-            <section class="botones" id="botones">
-                <button id="agregar" class="boton" type="submit">Agregar</button>
-                <button id="cierre" class="boton">Comenzar</button>
-            </section>
-        </div>
-        <!--agregar interfas visual de participantes (span .participante__npc, .participante__jugador)+js--->
-        <section id="alineacion" class="participantes__lista">
-            <span class="npc" id="npc"></span>
-            <span class="player" id="player"></span>
+          <!--otras estadisticas importantes a futuro vida, clase, alineamiento, rol (npc/jugador)-->
+          <span class="confirmacion alerta" id="confirmacion"></span>
         </section>
 
-        <div class="segunda__parte-juego activa" id="segundaparte">
-            <h3>Comienza la batalla</h3>
-            <p>Es el turno de <span id="turno_activo"></span></p>
-            <div id="acciones">
-                <h3 class="acciones">¿Que hace el personaje?</h3>
-                <div class="acciones__curacion" id="acciones__curacion">
-                    <label for="cantidad-curacion"> Curacion realizada:
-                        <input type="number" name="cantidad-curacion" id="cantidad-curacion" class="accion__cuarcion-cantidad">
-                    </label>
-                    <label for="target-curacion">
-                        <input type="text" name="target-curacion" id="target-curacion" class="accion__curacion-target">
-                    </label>
-                    <button class="accion__curacion-realizar">Curar</button>
-                </div>
-                <div class="acciones__daño" id="acciones__daño">
-                    <label for="cantidad-daño"> Daño realizado:
-                        <input type="number" name="cantidad-daño" id="cantidad-daño" class="accion__daño-cantidad">
-                    </label>
-                    <label for="target-daño">
-                        <input type="text" name="target-daño" id="target-daño" class="accion__daño-target">
-                    </label>
-                    <button class="accion__daño-realizar">Emotional damage</button>
-                </div>
-            </div>
+        <section class="botones" id="botones">
+          <button id="agregar" class="boton" type="submit">Agregar</button>
+          <button id="cierre" class="boton">Comenzar</button>
+        </section>
+      </div>
+      <!--agregar interfas visual de participantes (span .participante__npc, .participante__jugador)+js--->
+      <section id="alineacion" class="participantes__lista">
+        <span class="npc" id="npc"></span>
+        <span class="player" id="player"></span>
+      </section>
 
-            <button class="boton" id="pasar">siguente turno</button>
-
-            <p class="chat__batalla">
-                <span id="registro_batalla"></span>
-            </p>
+      <div class="segunda__parte-juego activa" id="segundaparte">
+        <h3>Comienza la batalla</h3>
+        <p>Es el turno de <span id="turno_activo"></span></p>
+        <div id="acciones">
+          <h3 class="acciones">¿Que hace el personaje?</h3>
+          <div class="acciones__curacion" id="acciones__curacion">
+            <label for="cantidad-curacion">
+              Curacion realizada:
+              <input
+                type="number"
+                name="cantidad-curacion"
+                id="cantidad-curacion"
+                class="accion__cuarcion-cantidad"
+              />
+            </label>
+            <label for="target-curacion">
+              <input
+                type="text"
+                name="target-curacion"
+                id="target-curacion"
+                class="accion__curacion-target"
+              />
+            </label>
+            <button class="accion__curacion-realizar">Curar</button>
+          </div>
+          <div class="acciones__daño" id="acciones__daño">
+            <label for="cantidad-daño">
+              Daño realizado:
+              <input
+                type="number"
+                name="cantidad-daño"
+                id="cantidad-daño"
+                class="accion__daño-cantidad"
+              />
+            </label>
+            <label for="target-daño">
+              <input
+                type="text"
+                name="target-daño"
+                id="target-daño"
+                class="accion__daño-target"
+              />
+            </label>
+            <button class="accion__daño-realizar">Emotional damage</button>
+          </div>
         </div>
+
+        <button class="boton" id="pasar">siguente turno</button>
+
+        <p class="chat__batalla">
+          <span id="registro_batalla"></span>
+        </p>
+      </div>
     </main>
     <footer></footer>
     <script src="/scrips/formulario.js"></script>
-</body>
-
+  </body>
 </html>
