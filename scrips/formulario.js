@@ -3,7 +3,7 @@
 //guardado de info boton agregar
 //por comodidad tomamos la parte de registro
 const primeraParte = document.getElementById("primeraparte");
-//por comodidad tomamos la aprte de batalla
+//por comodidad tomamos la parte de batalla
 const segundaParte = document.getElementById("segundaparte");
 //por comodidad tomamos todos los inputs de registro
 let inputs = document.querySelectorAll("#formulario input");
@@ -20,6 +20,7 @@ var tipo = "";
 //objeto que nos ayudaran a realizar la confirmacion de campos
 const validador = {
     nombre: false,
+    vida:false,
     velocidad: false,
     tipo: false,
 };
@@ -85,12 +86,12 @@ agregar.addEventListener("click", () => {
                 dato.value = "";
                 break;
             case "vida":
-                vida = dato.value;
+                vida = parseInt(dato.value);
                 validar(vida, "vida");
                 dato.value = "";
                 break;
             case "velocidad":
-                velocidad = dato.value;
+                velocidad = parseInt(dato.value);
                 validar(velocidad, "velocidad");
                 dato.value = "";
                 break;
@@ -128,9 +129,9 @@ agregar.addEventListener("click", () => {
 
 cierre.addEventListener("click", () => {
     turnos.sort((a, b) => {
-        if (parseInt(a.velocidad) > parseInt(b.velocidad)) {
+        if (a.velocidad > b.velocidad) {
             return -1;
-        } else if (parseInt(a.velocidad) < parseInt(b.velocidad)) {
+        } else if (a.velocidad < b.velocidad) {
             return 1;
         } else {
             return 0;
@@ -145,12 +146,36 @@ cierre.addEventListener("click", () => {
     activo.innerHTML = turnos[0].nombre;
 });
 
+//tomamos los datos necesarios para trabajar con las acciones en batalla (cantidad y target de curacion o daño)
 let dataCuracion =document.querySelectorAll('#acciones__curacion input');
 let dataDaño =document.querySelectorAll('#acciones__daño input');
-const botonCuracion =document.getElementById('boton_curacion')
-const botonDaño=document.getElementById('boton_daño')
+//tomamos los botones que dispararan el registro de accion 
+const botonCuracion =document.getElementById('boton_curacion');
+const botonDaño=document.getElementById('boton_daño');
+
+//se ingresan acciones ;D
+botonCuracion.addEventListener('click',()=>{
+    turnos.forEach((u)=>{
+        if(dataCuracion[1].value===u.nombre){
+            u.vida+=parseInt(dataCuracion[0].value)
+            console.log(u.vida)
+        }
+    })
+    
+})
 
 
+botonDaño.addEventListener('click',()=>{
+    turnos.forEach((u)=>{
+        if(dataDaño[1].value===u.nombre){
+            u.vida-=parseInt(dataDaño[0].value)
+            console.log(u.vida)
+        }
+    })
+    
+})
+
+//
 pasar.addEventListener("click", () => {
     if (contador === turnos.length - 1) {
         contador = 0;
