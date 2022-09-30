@@ -25,12 +25,13 @@ const validador = {
     tipo: false,
 };
 //usaremos la clase participante para facilitar la creacion de objetos
-class participante {
+class Participante {
     constructor(nombre, vida, velocidad, estado, tipo) {
         this.nombre = nombre;
         this.vida = vida;
+        this.vidaMax = vida
         this.velocidad = velocidad;
-        this.estado = estado;
+        this.estado = 'vivo';
         this.tipo = tipo;
     }
     //unas mousquerramientas que nos serviran mas tarde, para generar la actualizacion de estados mas agil
@@ -44,8 +45,9 @@ class participante {
 //constantes que nos ayudaran a integrar una inferfaz visual de los participantes actuales
 const listaNpc = document.getElementById("npc");
 const listaPlayers = document.getElementById("player");
+//30-09 cargar iconos desde un metodo de clase, podria facilitar la actualizacion para que funcione junto a la vida
 const player = "<i class='bx bxs-face'></i>";
-const nonplayer = "<i class='bx bx-bot'></i>";
+const nonplayer = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M21.928 11.607c-.202-.488-.635-.605-.928-.633V8c0-1.103-.897-2-2-2h-6V4.61c.305-.274.5-.668.5-1.11a1.5 1.5 0 0 0-3 0c0 .442.195.836.5 1.11V6H5c-1.103 0-2 .897-2 2v2.997l-.082.006A1 1 0 0 0 1.99 12v2a1 1 0 0 0 1 1H3v5c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5a1 1 0 0 0 1-1v-1.938a1.006 1.006 0 0 0-.072-.455zM5 20V8h14l.001 3.996L19 12v2l.001.005.001 5.995H5z"></path><ellipse cx="8.5" cy="12" rx="1.5" ry="2"></ellipse><ellipse cx="15.5" cy="12" rx="1.5" ry="2"></ellipse><path d="M8 16h8v2H8z"></path></svg>';
 
 //array para guardar a los partisipantes y luego ordenarlos
 let turnos = [];
@@ -95,10 +97,10 @@ agregar.addEventListener("click", () => {
                 validar(velocidad, "velocidad");
                 dato.value = "";
                 break;
-            case "estado":
-                estado = dato.value;
-                dato.value = "";
-                break;
+            //case "estado":
+                //estado = dato.value;
+                //dato.value = "";
+                //break;
             case "tipo":
                 tipo = dato.value;
                 validar(tipo, "tipo");
@@ -109,7 +111,7 @@ agregar.addEventListener("click", () => {
 
     //validador de opciones de ingreso
     if (validador.nombre && validador.velocidad && validador.tipo) {
-        turnos.push(new participante(nombre, vida, velocidad, estado, tipo));
+        turnos.push(new Participante(nombre, vida, velocidad, estado, tipo));
         confirmacion.innerHTML = `Se agrego correctamente a ${nombre}`;
         if (tipo === "npc") {
             listaNpc.innerHTML += nonplayer;
@@ -158,6 +160,9 @@ botonCuracion.addEventListener('click',()=>{
     turnos.forEach((u)=>{
         if(dataCuracion[1].value===u.nombre){
             u.vida+=parseInt(dataCuracion[0].value)
+            if(u.vida > u.vidaMax){
+                u.vida=u.vidaMax
+            }
             console.log(u.vida)
         }
     })
@@ -169,6 +174,18 @@ botonDaño.addEventListener('click',()=>{
     turnos.forEach((u)=>{
         if(dataDaño[1].value===u.nombre){
             u.vida-=parseInt(dataDaño[0].value)
+            if(u.vida < 1 && u.tipo === "npc"){
+                u.muerto()
+                console.log(u.estado)
+            }
+            if(u.vida < 1 && u.vida > -10 && u.tipo === 'jugador'){
+                u.cambio_stado('piso')
+                console.log(u.estado)
+            }   
+            if(u.vida <= -10 && u.tipo === 'jugador'){
+                u.muerto()
+                console.log(u.estado)
+            }  
             console.log(u.vida)
         }
     })

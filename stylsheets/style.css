@@ -37,3 +37,8 @@ main{
     font-size: 2rem;
     font-weight: 800;
 }
+
+svg{
+    width: 100px;
+    height: 100px;
+}
