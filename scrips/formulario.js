@@ -6,19 +6,18 @@ const primeraParte = document.getElementById("primeraparte");
 //por comodidad tomamos la parte de batalla
 const segundaParte = document.getElementById("segundaparte");
 //por comodidad tomamos todos los inputs de registro
-let inputs = document.querySelectorAll("#formulario input");
+const inputs = document.querySelectorAll("#formulario input");
 //aqui tomamos el boto que tiene una funcion dentro de la pagina generalmente un submit
 const agregar = document.getElementById("agregar");
 //tomamos la notificacion de ingreso correcto o incorrecto para trabajarla mas adelante
 const cierre = document.getElementById("cierre");
 //variable ausiliares que nos ayudara a guardar los nombres de cada objeto
-var nombre = "";
-var vida = "";
-var velocidad = "";
-var estado = "";
-var tipo = "";
+let vida
+let velocidad
+let estado
+let tipo
 //objeto que nos ayudaran a realizar la confirmacion de campos
-const validador = {
+let validador = {
     nombre: false,
     vida: false,
     velocidad: false,
@@ -62,6 +61,9 @@ class Participante {
             if (this.vida > this.vidaMax) {
                 this.vida = this.vidaMax
             }
+            if(this.vida>0){
+                this.estado = 'vivo'
+            }
             document.getElementById(`vida_actual-${this.nombre}`).innerHTML = this.vida
         }
         if (accion === 'daño') {
@@ -72,20 +74,30 @@ class Participante {
             }
             if (this.vida < 1 && this.vida > -10 && this.tipo === 'jugador') {
                 this.estado = 'piso'
-                document.getElementById(`imagen-${this.nombre}`).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(185, 168, 25, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M10.707 12.293 9.414 11l1.293-1.293-1.414-1.414L8 9.586 6.707 8.293 5.293 9.707 6.586 11l-1.293 1.293 1.414 1.414L8 12.414l1.293 1.293zm6.586-4L16 9.586l-1.293-1.293-1.414 1.414L14.586 11l-1.293 1.293 1.414 1.414L16 12.414l1.293 1.293 1.414-1.414L17.414 11l1.293-1.293zM10 16h4v2h-4z"></path></svg>'
-            }
+                }
             if (this.vida <= -10 && this.tipo === 'jugador') {
                 this.estado = 'muerto'
-                document.getElementById(`imagen-${this.nombre}`).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(177, 17, 17, 1);transform: ;msFilter:;"><path d="M12 2C5.505 2 2 6.637 2 11c0 2.129 1.009 3.979 3 5.508V21h3v-3h2v3h4v-3h2v3h3v-4.493c1.991-1.528 3-3.379 3-5.507 0-4.363-3.505-9-10-9zM8 13c-1.121 0-2-1.098-2-2.5S6.879 8 8 8s2 1.098 2 2.5S9.121 13 8 13zm8 0c-1.121 0-2-1.098-2-2.5S14.879 8 16 8s2 1.098 2 2.5-.879 2.5-2 2.5z"></path></svg>'
             }
             document.getElementById(`vida_actual-${this.nombre}`).innerHTML = this.vida
         }
     }
+    Cambio_estado(){
+        if(this.tipo === 'jugador'){
+            if( this.estado === 'vivo'){
+                document.getElementById(`imagen-${this.nombre}`).innerHTML = player
+            }else if(this.estado === 'piso'){
+                document.getElementById(`imagen-${this.nombre}`).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(185, 168, 25, 1);transform: ;msFilter:;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M10.707 12.293 9.414 11l1.293-1.293-1.414-1.414L8 9.586 6.707 8.293 5.293 9.707 6.586 11l-1.293 1.293 1.414 1.414L8 12.414l1.293 1.293zm6.586-4L16 9.586l-1.293-1.293-1.414 1.414L14.586 11l-1.293 1.293 1.414 1.414L16 12.414l1.293 1.293 1.414-1.414L17.414 11l1.293-1.293zM10 16h4v2h-4z"></path></svg>'
+            }else if(this.estado === 'muerto'){
+                document.getElementById(`imagen-${this.nombre}`).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(177, 17, 17, 1);transform: ;msFilter:;"><path d="M12 2C5.505 2 2 6.637 2 11c0 2.129 1.009 3.979 3 5.508V21h3v-3h2v3h4v-3h2v3h3v-4.493c1.991-1.528 3-3.379 3-5.507 0-4.363-3.505-9-10-9zM8 13c-1.121 0-2-1.098-2-2.5S6.879 8 8 8s2 1.098 2 2.5S9.121 13 8 13zm8 0c-1.121 0-2-1.098-2-2.5S14.879 8 16 8s2 1.098 2 2.5-.879 2.5-2 2.5z"></path></svg>' 
+            }
+        }
+    }
+    
 }
 
 
 //array para guardar a los partisipantes y luego ordenarlos
-let turnos = [];
+let  turnos = [];
 //funcion para validar campos y asegurar que los campos inportantes no esten vacios
 const validar = (input, campo) => {
     if (input === "") {
@@ -98,13 +110,13 @@ const validar = (input, campo) => {
 };
 //constantes para la segunda parte
 //variable ausiliar que nos ayuda a determinar el estado de la partida
-var estadoPartida = "Registro";
+let estadoPartida = "Registro";
 
 const pasar = document.getElementById("pasar");
 const chat = document.getElementById("chat");
 const estadoParticipante = document.getElementById("chat");
-let activo = document.getElementById("turno_activo");
-var contador = 0;
+const activo = document.getElementById("turno_activo");
+let contador = 0;
 
 //comuenzo de la ejecucion de programas
 //parte uno Registro
@@ -201,7 +213,7 @@ botonCuracion.addEventListener('click', () => {
     turnos.forEach((u) => {
         if (dataCuracion[1].value === u.nombre) {
             u.Cambio_vida(dataCuracion[0].value, 'curacion')
-            console.log(u.vida)
+            u.Cambio_estado()
         }
     })
 
@@ -209,14 +221,18 @@ botonCuracion.addEventListener('click', () => {
 
 
 botonDaño.addEventListener('click', () => {
-    turnos.forEach((u) => {
+    //aqui ocupo un ciclo for en vez de forEach ya que necesito saber en que index me encuentro apra asi sacar el elemento del array en caso de muerte
+    for (let i = 0; i < turnos.length; i++) {
+        const u = turnos[i];
         if (dataDaño[1].value === u.nombre) {
             u.Cambio_vida(dataDaño[0].value, 'daño')
-            console.log(u.estado)
-            console.log(u.vida)
+            u.Cambio_estado()
+            if(u.estado === 'muerto'){
+                turnos.splice(i,1)
+            }
         }
-    })
-
+        
+    }
 })
 
 //
