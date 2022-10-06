@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="/stylsheets/tienda.css">
 </head>
 <body>
     <header>
@@ -21,6 +22,24 @@
         </ul>
     </header>
     <main>
+        <section class="transaccion" id="transaccionDirecta">
+            <p id="gastoTotal">Carrito: <spani id="gastoTotal"></span></p>
+            <label for="carrito"> Querido master ve agregando los gastos: <input type="number" id="carrito" name="carrito"></label>
+            <input type="text" list="lista_monedas"> 
+            <datalist id="lista_monedas">
+                <option>Platino</option>
+                <option>Oro</option>
+                <option>Plata</option>
+                <option>Cobre</option>
+            </datalist>
+            <button id="agregarCobro">agregar</button>
+            </p>
+            <label for="monedero"> Aqui ingresa el pago de tu party: <input type="number" id="monedero" name="carrito"></label>
+            <input type="text" list="lista_monedas"> 
+            <button id="agregarFondo">agregar</button><button id="calcularDirecta">calcular</button>
+        </section>
+
+        <div id="cuidado"> Cuidado gente trabajando{
         <section>
             <p>Usaras monedas adicionales</p>
             <button>Sí</button>            <button>No</button>
@@ -28,9 +47,11 @@
                 <label for="monedaAdicional-nombre">
                     Ingresa el nombre de la moneda poco convencional:<input type="text" name="monedaAdicional-nombre" id="monedaAdicional-nombre" placeholder="Ejemplo: Electrum">
                 </label>
+                
                 <label for="monedaAdicional-valor">
                     a cuantas piezas de cobre equivale:<input type="number" placeholder="Ejemplo: 70">
                 </label>
+                
             </div>
         </section>
 
@@ -46,6 +67,7 @@
             la tienda generada , seleccion de "cliente"(js descuentos y transformaciones etc)
         </section>
     </main>
-    <footer></footer>
+    <footer></footer>}</div>
+    <script src="/scrips/tiendas.js"></script>
 </body>
 </html>
