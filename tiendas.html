@@ -20,24 +20,30 @@
             <li><a href="/dungeon21.html">batallas</a></li>
             <li><a href="/tiendas.html">tiendas</a></li>
         </ul>
-    </header>
+    </header>            
+    <datalist id="lista_monedas">
+        <option>Platino</option>
+        <option>Oro</option>
+        <option>Plata</option>
+        <option>Cobre</option>
+    </datalist>
     <main>
-        <section class="transaccion" id="transaccionDirecta">
-            <p id="gastoTotal">Carrito: <spani id="gastoTotal"></span></p>
-            <label for="carrito"> Querido master ve agregando los gastos: <input type="number" id="carrito" name="carrito"></label>
-            <input type="text" list="lista_monedas"> 
-            <datalist id="lista_monedas">
-                <option>Platino</option>
-                <option>Oro</option>
-                <option>Plata</option>
-                <option>Cobre</option>
-            </datalist>
-            <button id="agregarCobro">agregar</button>
+        <div class="transaccion" id="transaccionDirecta">
+            <p id="gastoTotal">Carrito: Platino: <span id="Platino"></span> Oro: <span id="Oro"></span>Plata: <span id="Plata"></span>Cobre: <span id="Cobre"></span></p>
+            
+            <section id="gastos">                
+                <label for="carrito"> Querido master ve agregando los gastos: 
+                    <input type="number" id="carrito" name="carritoNumero"></label>
+                <input type="text" list="lista_monedas" name="carritoMoneda">
+                <button id="agregarCobro">agregar</button>
+            </section> 
+
+            
             </p>
             <label for="monedero"> Aqui ingresa el pago de tu party: <input type="number" id="monedero" name="carrito"></label>
             <input type="text" list="lista_monedas"> 
             <button id="agregarFondo">agregar</button><button id="calcularDirecta">calcular</button>
-        </section>
+        </div>
 
         <div id="cuidado"> Cuidado gente trabajando{
         <section>
