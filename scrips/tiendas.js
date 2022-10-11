@@ -1,4 +1,4 @@
-const transaccionData = document.querySelectorAll('#gastos input')
+const gastosData = document.querySelectorAll('#gastos input')
 const carro = document.querySelectorAll('#gastoTotal span')
 const  gastoBoton= document.getElementById('agregarCobro')
 const fondoBoton = document.getElementById('agregarFondo')
@@ -33,8 +33,10 @@ function CalcularVivisas(objeto,lista){
         
     }
 }
+
+
 gastoBoton.addEventListener('click',()=>{
-    transaccionData.forEach((e)=>{
+    gastosData.forEach((e)=>{
         switch(e.name){
             case 'carritoNumero':
                 if(e.value !== ''){
@@ -70,3 +72,7 @@ gastoBoton.addEventListener('click',()=>{
 });
 
 calcular.addEventListener('click',()=>{CalcularVivisas(valorCarrito,listaMonedas)})
+
+fondoBoton.addEventListener('click', ()=>{
+
+})
