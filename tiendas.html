@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon 21 Tienda </title>
+    <link rel="icon" href="/img/fira ico/favicon.ico">
+    <!--boxicon-->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/stylsheets/tienda.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/dungeon21.html">batallas</a></li>
+            <li><a href="/tiendas.html">tiendas</a></li>
+        </ul>
+    </header>            
+    <datalist id="lista_monedas">
+        <option>Platino</option>
+        <option>Oro</option>
+        <option>Plata</option>
+        <option>Cobre</option>
+    </datalist>
+    <main>
+        <div class="transaccion" id="transaccionDirecta">
+            <p id="gastoTotal">Carrito: Platino: <span id="Platino"></span> Oro: <span id="Oro"></span> Plata: <span id="Plata"></span> Cobre: <span id="Cobre"></span></p>
+            
+            <section id="gastos">                
+                <label for="carrito"> Querido master ve agregando los gastos: 
+                    <input type="number" id="carrito" name="carritoNumero"></label>
+                <input type="text" list="lista_monedas" name="carritoMoneda">
+                <button id="agregarCobro">agregar</button>
+            </section> 
+
+            
+            </p>
+            <label for="monedero"> Aqui ingresa el pago de tu party: <input type="number" id="monedero" name="carrito"></label>
+            <input type="text" list="lista_monedas"> 
+            <button id="agregarFondo">agregar</button>
+            <button id="calcularDirecta">calcular</button>
+        </div>
+
+        <div id="cuidado"> Cuidado gente trabajando{
+        <section>
+            <p>Usaras monedas adicionales</p>
+            <button>Sí</button>            <button>No</button>
+            <div class="registro__monedas activo" id="RegistroMonedas">
+                <label for="monedaAdicional-nombre">
+                    Ingresa el nombre de la moneda poco convencional:<input type="text" name="monedaAdicional-nombre" id="monedaAdicional-nombre" placeholder="Ejemplo: Electrum">
+                </label>
+                
+                <label for="monedaAdicional-valor">
+                    a cuantas piezas de cobre equivale:<input type="number" placeholder="Ejemplo: 70">
+                </label>
+                
+            </div>
+        </section>
+
+        <section>
+            registro de personaje
+            nombre 
+            cartera.
+        </section>
+        <section>
+            elegir tienda manual o random por tematica ->catidad de objetos generada
+        </section>
+        <section>
+            la tienda generada , seleccion de "cliente"(js descuentos y transformaciones etc)
+        </section>
+    </main>
+    <footer></footer>}</div>
+    <script src="/scrips/tiendas.js"></script>
+</body>
+</html>

@@ -22,6 +22,7 @@ main{
 .correcto{
     display: block;
     color: green;
+<<<<<<< HEAD
 }
 
 .activa{
@@ -30,4 +31,25 @@ main{
 
 .inactiva{
     display: none;
+}
+
+#turno_activo{
+    color: firebrick;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+svg{
+    width: 100px;
+    height: 100px;
+=======
+}
+
+.activa{
+    display: block;
+}
+
+.inactiva{
+    display: none;
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
 }

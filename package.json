@@ -1,0 +1,19 @@
+{
+  "name": "make-nivel-20-great-again",
+  "version": "0.1.0",
+  "description": "pequeño proyecto con la finalidad de ayudar a todos los dungeon masters dando acceso a informacion util de forma rapida y eficaz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseInostroza/make-nivel-20-great-again.git"
+  },
+  "author": "unPeladoGenerico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseInostroza/make-nivel-20-great-again/issues"
+  },
+  "homepage": "https://github.com/JoseInostroza/make-nivel-20-great-again#readme"
+}

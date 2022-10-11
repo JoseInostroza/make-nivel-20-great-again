@@ -5,7 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
+    <title>Dungeon 21 Batallas </title>
+    <link rel="icon" href="/img/fira ico/favicon.ico">
+=======
     <title>Ayuda Masters</title>
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
@@ -16,11 +21,24 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+    <header>        
+        <ul>
+            <li><a href="/dungeon21.html">batallas</a></li>
+            <li><a href="/tiendas.html">tiendas</a></li>
+        </ul>
+    </header>
+    <main>
+        <h1>Ayuda Masters</h1>
+        <h2>Apoyo en batallas</h2>
+
+=======
     <header></header>
     <main>
         <h1>Ayuda Masters</h1>
         <h2>Apoyo en batallas</h2>
         
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
         <div class="primera__parte-ingreso activa" id="primeraparte">
             <h3>Registra a los participantes</h3>
             <section id="formulario" class="registro__personajes">
@@ -29,13 +47,34 @@
                 </label>
                 <span class="formulario-nombre alerta" id="formulario-nombre">Campo obligatorio</span>
 
+<<<<<<< HEAD
+                <label for="vida">¿Cuanta vida tiene?:
+                    <input type="number" id="vida" name="vida" class="registro__personaje-vida" />
+                </label>
+                <span class="formulario-vida alerta" id="formulario-vida">Campo obligatorio</span>
+
+                <label for="velocidad">¿Cual es su iniciativa?:
+=======
                 <label for="velocidad">introduce el valor de la iniciativa:
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
                     <input type="number" id="velocidad" name="velocidad" class="formulario__personaje-vel" />
                 </label>
 
                 <span class="formulario-velocidad alerta" id="formulario-velocidad">Campo obligatorio, solo puede tener
                     valores numericos</span>
 
+<<<<<<< HEAD
+                <!-- <label for="estado">¿Cual es el estado incial del participante?:
+                    estados basicos (vivo->muerto) a futura se agregarian invisible amistoso agresivo
+                    <input type="text" id="estado" name="estado" class="formulario__personaje-estado"
+                        placeholder="" />
+                </label>-->
+
+                <label for="tipo">¿tipo de participante?:
+                    <input type="text" name="tipo" id="tipo" class="formulario__personaje-tipo"
+                        placeholder="npc o jugador" />
+                </label>
+=======
                 <label for="estado">Cual es el estado incial del participante:
                     <!--estados basicos (vivo->muerto) a futura se agregarian invisible amistoso agrecivo-->
                     <input type="text" id="estado" name="estado" class="formulario__personaje-estado"
@@ -47,6 +86,7 @@
                         placeholder="npc o jugador" />
                 </label>
 
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
                 <span class="formulario-tipo alerta" id="formulario-tipo">Campo obligatorio</span>
 
                 <!--otras estadisticas importantes a futuro vida, clase, alineamiento, rol (npc/jugador)-->
@@ -60,24 +100,67 @@
         </div>
         <!--agregar interfas visual de participantes (span .participante__npc, .participante__jugador)+js--->
         <section id="alineacion" class="participantes__lista">
+<<<<<<< HEAD
+            <div class="npc" id="npc">
+                
+            </div>
+            <div class="player" id="player"></div>
+=======
             <span class="npc" id="npc"></span>
             <span class="player" id="player"></span>
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
         </section>
 
         <div class="segunda__parte-juego inactiva" id="segundaparte">
             <h3>Comienza la batalla</h3>
             <p>Es el turno de <span id="turno_activo"></span></p>
+<<<<<<< HEAD
+            <div id="acciones">
+                <h3 class="acciones">¿Que hace el personaje?</h3>
+                <div class="acciones__curacion" id="acciones__curacion">
+                    <label for="cantidad-curacion">
+                        Curacion realizada:
+                        <input type="number" name="cantidad-curacion" id="cantidad-curacion"
+                            class="accion__cuarcion-cantidad" placeholder="0" />
+                    </label>
+                    <label for="target-curacion">
+                        <input type="text" name="target-curacion" id="target-curacion"
+                            class="accion__curacion-target" />
+                    </label>
+                    <button class="accion__curacion-boton" id="boton_curacion">Curar</button>
+                </div>
+                <div class="acciones__daño" id="acciones__daño">
+                    <label for="cantidad-daño">
+                        Daño realizado:
+                        <input type="number" name="cantidad-daño" id="cantidad-daño" class="accion__daño-cantidad"
+                            placeholder="0" />
+                    </label>
+                    <label for="target-daño">
+                        <input type="text" name="target-daño" id="target-daño" class="accion__daño-target" />
+                    </label>
+                    <button class="accion__daño-boton" id="boton_daño">Emotional damage</button>
+                </div>
+            </div>
+
+            <button class="boton" id="pasar">siguente turno</button>
+
+=======
             <label for="actualizacion_de_estado"> Actualiza el estado del personaje o partida:
                 <input type="text" id="chat" class="Ingreso_estado" placeholder="Estados posibles vivo, muerto, terminado">
             </label>
             <button class="boton" id="interaccion">Actualizar</button>
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
             <p class="chat__batalla">
                 <span id="registro_batalla"></span>
             </p>
         </div>
     </main>
     <footer></footer>
+<<<<<<< HEAD
+    <script src="/scrips/batalla.js"></script>
+=======
     <script src="/scrips/formulario.js"></script>
+>>>>>>> 5560e6b52148f9bccc51490dab5f31caf474bb8b
 </body>
 
 </html>
