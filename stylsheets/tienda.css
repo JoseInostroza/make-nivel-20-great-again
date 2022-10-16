@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    background-color: #B09B71;
+    color: #312F20;
+}
+
+input{
+    background-color: #D8CCA3;
+}
+button{
+    background-color: #D8CCA3;
+}
+#cuidado{
+    margin-top: 300px;
+}
