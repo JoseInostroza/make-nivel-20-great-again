@@ -6,13 +6,14 @@ const fondoBoton = document.getElementById('agregarFondo')
 const calcular = document.getElementById('calcularDirecta')
 
 let listaMonedas = ['Cobre','Plata','Oro','Platino']
-let monto
+let cash=0
+let bobeda=0
 let tipo
 let valorCarrito={'Cobre':0,'Plata':0,'Oro':0,'Platino':0}
 
-function actaulizarCarro(moneda, valor){
-    valor= parseInt(valor)
-    valorCarrito[moneda]+= valor
+
+
+function actaulizarCarro(moneda){
     carro.forEach((element)=>{        
         if(element.id === moneda){           
             element.innerHTML = valorCarrito[moneda]
@@ -20,18 +21,38 @@ function actaulizarCarro(moneda, valor){
     })
 }
 
-function CalcularVivisas(objeto,lista){
-    for (i=0; i<lista.length; ++i){
-        if((objeto[lista[i]]>9 || objeto[lista[i]]<-9) && lista[i]!=='Platino'){
-           up= objeto[lista[i]]/10;
-           objeto[lista[i+1]] += Math.trunc(up);
-           up=0;
-           objeto[lista[i]] = objeto[lista[i]]%10
-           actaulizarCarro(lista[i],0)
-           actaulizarCarro(lista[i+1],0)
-        }
-        
+function CalcularVivisas(){
+    monto=bobeda
+    //up= objeto[lista[i]]/10;
+    //objeto[lista[i+1]] += Math.trunc(up);
+    //up=0;
+    //objeto[lista[i]] = objeto[lista[i]]%10
+    //actaulizarCarro(lista[i])
+    //actaulizarCarro(lista[i+1])
+    if(monto%1000 !==0 || monto/1000 !== 0){
+        platino = Math.trunc(monto/1000)
+        valorCarrito['Platino']= platino
+        actaulizarCarro('Platino')
+        monto = monto%1000
+        console.log(monto, bobeda, platino);
+    } 
+    if(monto%100 !==0 || monto/100 !== 0){
+        oro = Math.trunc(monto/100)
+        valorCarrito['Oro']= oro
+        actaulizarCarro('Oro')
+        monto = monto%100
     }
+    if(monto%10 !==0 || monto/10 !== 0){
+        plata = Math.trunc(monto/10)
+        cobre = monto%10
+        valorCarrito['Plata']= plata
+        actaulizarCarro('Plata')
+        valorCarrito['Cobre'] = cobre
+        actaulizarCarro('Cobre')
+    }
+    
+        
+    
 }
 
 
@@ -40,7 +61,7 @@ gastoBoton.addEventListener('click',()=>{
         switch(e.name){
             case 'carritoNumero':
                 if(e.value !== ''){
-                    monto = e.value
+                    cash = parseInt(e.value) 
                     e.value=''
                     break
                 }else {
@@ -51,29 +72,30 @@ gastoBoton.addEventListener('click',()=>{
                 if(listaMonedas.includes(e.value)){
                     switch(e.value){
                         case 'Cobre':
-                            actaulizarCarro(e.value,monto)
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda+=cash
+                            CalcularVivisas()
                             e.value=''                           
                             break
                         case 'Plata':
-                            actaulizarCarro(e.value,monto)
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda+=cash*10
+                            CalcularVivisas()
                             e.value='' 
                             break
                         case 'Oro':
-                            actaulizarCarro(e.value,monto)
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda+=cash*100
+                            CalcularVivisas()
                             e.value='' 
                             break
                         case 'Platino':
-                            actaulizarCarro(e.value,monto)
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda+=cash*1000
+                            CalcularVivisas()
                             e.value='' 
                             break
                     }
                 }else{
                     console.log('not gucci');
                 }
+                cash=0
         }
     })
     
@@ -90,7 +112,7 @@ fondoBoton.addEventListener('click', ()=>{
         switch(e.name){
             case 'monederoNumero':
                 if(e.value !== ''){
-                    monto = -parseInt(e.value) 
+                    cash = parseInt(e.value ) 
                     e.value=''
                     break
                 }else {
@@ -101,28 +123,29 @@ fondoBoton.addEventListener('click', ()=>{
                 if(listaMonedas.includes(e.value)){
                     switch(e.value){
                         case 'Cobre':
-                            actaulizarCarro('Cobre',monto)
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda -= cash
+                            CalcularVivisas()
                             e.value=''                          
                             break
                         case 'Plata':
-                            actaulizarCarro('Cobre',(monto*10))
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda -= cash*10
+                            CalcularVivisas()
                             e.value=''
                             break
                         case 'Oro':
-                            actaulizarCarro('Cobre',(monto*100))
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda -= cash*100
+                            CalcularVivisas()
                             e.value=''
                             break
                         case 'Platino':
-                            actaulizarCarro('Cobre',(monto*1000))
-                            CalcularVivisas(valorCarrito,listaMonedas)
+                            bobeda -= cash*1000
+                            CalcularVivisas()
                             e.value=''
                             break
                     }
                 }else{
                     console.log('not gucci');
                 }
+                cash=0
 }})
 })
